@@ -29,6 +29,20 @@ app.get('/atletas/mercado', async (req, res) => {
       res.status(500).json({ error: 'Erro ao obter dados da API' });
     }
   });
+
+  app.get('/atletas/pontuados', async (req, res) => {
+    try {
+      const url = 'https://api.cartolafc.globo.com/atletas/pontuados';  
+      // Fazer a requisição para a API
+      const response = await axios.get(url);  
+      // Enviar a resposta em formato JSON
+      res.json(response.data);
+    } catch (error) {
+      // Tratar erros de requisição
+      res.status(500).json({ error: 'Erro ao obter dados da API' });
+    }
+  });
+
   app.get('/clubes', async (req, res) => {
     try {
       const url = 'https://api.cartolafc.globo.com/clubes';  
